@@ -95,8 +95,8 @@ numbers = [1,2,3,4,5] - list
 *2.Local scope*
  -> Variables / data in the local scope can only be accessed in its defined scope
  -> Variables in the local scope are called local variables
-
  Research on types of functions (inbuilt vs user defined functions)
+
 
  *task*
 Optimize your program in database.py by using functions to either select or insert data
@@ -131,3 +131,53 @@ CREATE TABLE users (
     password VARCHAR(255) NOT NULL
 );
   
+
+
+*SQL MUST KNOW*
+1.basic sql queries
+2.primary and foreign keys
+3.joins and aliases
+4.aggregate functions (max,min,count,avg,sum)
+5.group by & order by
+6.where clause
+
+*PYTHON MUST KNOW*
+1.Functions
+2.Loops
+3.If statements
+4.Python data structures -lists & tuples and their properties
+5.data types 
+
+
+products - id, name , buying_price, selling_price
+sales - id, pid, quantity, created_at
+
+*sales per product* - sales, product
+sales = quantity * selling_price
+
+*JOINS*
+Enables us to fetch data from more than one table based on a related column 
+
+select products.name as p_name , sum(quantity * selling_price) as total_sales from sales join products 
+on products.id = sales.pid group by p_name;
+
+
+ id | pid | quantity |         created_at         
+----+-----+----------+----------------------------
+  1 |   3 |       50 | 2026-04-10 15:06:40.615398
+  2 |   3 |       40 | 2026-04-10 15:06:40.615398
+  3 |   3 |       10 | 2026-04-10 15:06:40.615398
+
+
+
+
+*TASK 13-04*
+1.Using functions insert the following data: stock, sales, users 
+2.Write sql queries to fetch the following data:
+   - *sales per product*
+   - sales per day
+   - profit per product
+   - profit per day
+
+   *2nd method to insert data* 
+   
