@@ -100,4 +100,34 @@ numbers = [1,2,3,4,5] - list
 
  *task*
 Optimize your program in database.py by using functions to either select or insert data
+
+
+CREATE TABLE products (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    buying_price NUMERIC(20, 2) NOT NULL CHECK (buying_price >= 0),
+    selling_price NUMERIC(20, 2) NOT NULL CHECK (selling_price >= 0)
+);
+
+CREATE TABLE stock (
+    id SERIAL PRIMARY KEY,
+    pid INTEGER NOT NULL REFERENCES products(id) ON DELETE CASCADE,
+    stock_quantity INTEGER NOT NULL CHECK (stock_quantity >= 0),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE sales (
+    id SERIAL PRIMARY KEY,
+    pid INTEGER NOT NULL REFERENCES products(id) ON DELETE CASCADE,
+    quantity INTEGER NOT NULL CHECK (quantity > 0),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    full_name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    phone_number VARCHAR(100) NOT NULL,
+    password VARCHAR(255) NOT NULL
+);
   
