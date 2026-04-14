@@ -54,3 +54,54 @@ product2 = ('calculator',1000,1500)
 insert_products(product1)
 insert_products(product2)
 
+
+
+def insert_stock(stock_details):
+    cur.execute("insert into stock(pid,stock_quantity)values(%s,%s)",(stock_details))
+    conn.commit()
+
+stock1 = (5,40)
+stock2 = (6,70)
+insert_stock(stock1)
+insert_stock(stock2)
+
+
+
+
+
+
+
+def sales_per_product():
+    cur.execute('''
+                select products.name as p_name , sum(quantity * selling_price) as total_sales 
+                from sales join products on products.id = sales.pid group by p_name;
+    ''')
+    sales_product = cur.fetchall()
+    return sales_product
+
+
+def sales_per_day():
+    cur.execute('''
+        select date(sales.created_at) as day, (sales.quantity * products.selling_price) as 
+        total_sales from products join sales on sales.pid = products.id group by day;
+    ''')
+    sales_day = cur.fetchall()
+    return sales_day
+
+
+def profit_per_product():
+    cur.execute('''
+        select products.name as p_name , sum((selling_price - buying_price) * quantity) as total_profit
+        from sales join products on sales.pid = products.id group by p_name;
+    ''')
+    profit_product = cur.fetchall()
+    return profit_product
+
+def profit_per_day():
+    cur.execute('''
+        select date(sales.created_at) as day, sum((selling_price - buying_price) * quantity) as total_profit
+        from sales join products on sales.pid = products.id group by day;
+    ''')
+    profit_day = cur.fetchall()
+    return profit_day
+

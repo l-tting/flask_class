@@ -1,18 +1,8 @@
-from database import get_products
+x = '''
 
-x = get_products()
+   this is a string
+   declared as a
+   multiline string
+
+'''
 print(x)
-
-
-
-x = 4
-y = 6
-z = x + y
-
-
-def get_sum():
-    x = 4
-    y = 5
-    return x + y
-    
-

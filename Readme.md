@@ -158,8 +158,6 @@ sales = quantity * selling_price
 *JOINS*
 Enables us to fetch data from more than one table based on a related column 
 
-select products.name as p_name , sum(quantity * selling_price) as total_sales from sales join products 
-on products.id = sales.pid group by p_name;
 
 
  id | pid | quantity |         created_at         
@@ -167,7 +165,6 @@ on products.id = sales.pid group by p_name;
   1 |   3 |       50 | 2026-04-10 15:06:40.615398
   2 |   3 |       40 | 2026-04-10 15:06:40.615398
   3 |   3 |       10 | 2026-04-10 15:06:40.615398
-
 
 
 
@@ -180,4 +177,67 @@ on products.id = sales.pid group by p_name;
    - profit per day
 
    *2nd method to insert data* 
+
+
+
+
+   *multiline string*
+-> A frmat of writing strings where a string is allowed to traverse / cover more than a single line
+-> By default , strings use either the ' ' or " "
+-> Multiline strings use """ """ or ''' '''
+
+
+sales per day
+sales = quantity * selling_price
+day - time component
+
+products - id, name, buying_price,selling_price
+sales -id,pid,quantity , created_at
+
+profit = (selling_price - buying_price) * quantity
+*sales per products*
+select products.name as p_name , sum(quantity * selling_price) as total_sales from sales join products 
+on products.id = sales.pid group by p_name;
+
+*sales per day*
+select date(sales.created_at) as day, (sales.quantity * products.selling_price) as total_sales from products join sales 
+on sales.pid = products.id group by day;
+
+*profit per product*
+select products.name as p_name , sum((selling_price - buying_price) * quantity) as total_profit
+from sales join products on sales.pid = products.id group by p_name;
+
+*profit per day*
+select date(sales.created_at) as day, sum((selling_price - buying_price) * quantity) as total_profit
+from sales join products on sales.pid = products.id group by day;
+
+
+*Inserting data using placeholders*
+-> Here we use placeholders to safely add data to tables instead of usiing f-string
+-> using f-string in sql queries is prone to SQL injection
+
+*sql injection*
+ -> an attack where someone tricks your database into running unintended sql commands by inserting malicious
+ inputs into yout query
+
+e.g.
+def get_user(name,password):
+    cur.execute(f"select * from users where users.name = 'admin' and password = '' OR '1' = '1')
+   1 = 1
+   name : admin
+   password : '' OR '1' = '1'
+   To prevent sql injection here , we use placeholders to insert data
+
+*task 14-04*
+1.change all your insert functions to use placeholders instead of f-strings
+
+
+
+*INTRODUCTION TO OOP*
    
+
+
+
+
+
+
