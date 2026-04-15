@@ -60,6 +60,7 @@ def insert_stock(stock_details):
     cur.execute("insert into stock(pid,stock_quantity)values(%s,%s)",(stock_details))
     conn.commit()
 
+
 stock1 = (5,40)
 stock2 = (6,70)
 insert_stock(stock1)

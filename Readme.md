@@ -234,7 +234,81 @@ def get_user(name,password):
 
 
 *INTRODUCTION TO OOP*
-   
+-> We have a broad classification of data types namely:
+1.Inbuilt data types 
+   -> Come predefined with the programming language 
+   -> int,float,str,bool,list,tuple, dict
+2.User defined types
+   -> Are custom data types created by the programmer 
+   -> is enabled by object oriented programmng
+
+
+*OOP*
+-> Object Oriented Programming => this is a concept whereby programs are built using classes and objects
+*Class* - a blueprint / template for creating objects
+*Object* - an instance of a class
+
+*Properties of a class*
+-> Any class has the following properties:
+1.Identity
+   -> the unique name of the class / object
+2.State
+   -> Variables contained inside a class
+   -> Variables contained inside a class are called *attributes*
+   -> what do i have? 
+3.Behaviour
+   -> represents what a class can do
+   -> enabled by use of functions
+   -> functions inside classes are called *methods*
+
+-> We create classes using the 'class' keyword
+
+class Phone
+   attributes / state - memory, colour, storage, make, model ,imei
+   behaviour - call, ring, text, tweet, play_games, power_on, power_off, take_photos,download_apps
+
+class Dog
+    attributes - name, age, breed
+    behaviour - bark, bite, sleep, chase, walk,eat,sleep
+
+Class Programmer
+    attributes -  name, favourite language, experience
+    behaviour - write code, debug code, use github
+
+class Laptop 
+   attributes - memory , colour, size, storage, processor, os , 
+   behaviour - power_on, power_off, code, watch_movies, download_software
+
+Class Doctor:
+	Attributes: name, age, department, 
+	Behaviour: treats, diagnoses, assess
+
+class Car
+   attributes - make, model , yom , fuel_capacity, 
+   behaviour - drive, stop, start, stall , carry_good
+
+
+*Method* - a function inside a class
+*Constructor* - a special method used to initialize objects. It is automatically called when 
+     creating an object . In Python , we use the __init__(self,parameters) constructor
+*self* - reference the object created
+*parameters* - attributes of the class
+
+dunder_methods -> double underscore methods
+
+
+
+*task 15-04*
+OOP Task 
+1.Create a class called BankAccount with the following attributes: -account number -balance -owner name -date opened
+2.Give the above BankAccount class the following behaviour or methods: -deposit() -withdraw() 
+-display_info()
+3.Create two BankAccount objects that can deposit, withdraw and display_info
+
+
+
+
+
 
 
 
