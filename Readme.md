@@ -301,9 +301,11 @@ dunder_methods -> double underscore methods
 *task 15-04*
 OOP Task 
 1.Create a class called BankAccount with the following attributes: -account number -balance -owner name -date opened
-2.Give the above BankAccount class the following behaviour or methods: -deposit() -withdraw() 
--display_info()
+2.Give the above BankAccount class the following behaviour or methods: -deposit() -withdraw() -display_info()
 3.Create two BankAccount objects that can deposit, withdraw and display_info
+
+*task 16-04*
+1.Create a Car Class Have the following attributes brand - model - year -fuel_capcity - fuel_level -is_running(boolen value) Have the following methods as behaviour for your class: start() stop() refuel() drive() display_car_info()
 
 
 
