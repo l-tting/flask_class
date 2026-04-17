@@ -308,6 +308,59 @@ OOP Task
 1.Create a Car Class Have the following attributes brand - model - year -fuel_capcity - fuel_level -is_running(boolen value) Have the following methods as behaviour for your class: start() stop() refuel() drive() display_car_info()
 
 
+*OOP Concepts*
+1.Inheritance 
+2.Polymorphism
+3.Abstraction
+4.Encapsulation
+5.Method overriding and Method Overloading
+
+
+*INTRODUCTION TO FLASK*
+*Internet* - global network of connected devices or computers
+*www* - a service running on the internet that connects users to the internet via the browser
+*server* - a computer device used for receiving / sending data from a client
+*Hosting* - uploading application files to a server to make the application available to everyone online
+
+Build your application -----> Uploading app files to a server ----> Ip address is assigned to your app ----> Users can now access it
+
+*IP Address* - a number used to uniquely identify a device on a network
+  types of ip addresses -> ipv4 and ipv6
+  e.g. 172.181.405.220
+
+*Domain name* - a user friendy name used in place of complex ip addresses to access applications
+  e.g. google.com
+
+*DNS* - Domain Name System - the internet's phonebook used to match domain names to ip addresses  
+
+127.0.0.1 - > ip address of your own local device
+localhost -> domain name for 127.0.0.1
+
+*FLASK*
+-> A python framework used to build web applications
+
+*Framework vs Library*
+approach 1 -  very strict on guidelines but easier - framework
+approach 2 - very flexible but harder - library
+
+*Framework* - a prebuilt structure of code and tools used to help developers build applications by 
+not having to create everything from scratch. They easen the development process but have very strict
+guidelines on usage
+
+*Examples of frameworks*
+1.Python - Flask,Django,FastAPI
+2.PHP - Laravel
+3.JavaScript - React, Angular, Vue,Svelte
+4.Java - Spring
+5.C# - .NET
+6.Golang - Chi , Gin
+7.NodeJS - Express
+8.Ruby - Ruby on Rails
+
+*ROUTING IN FLASK*
+
+
+
 
 
 
