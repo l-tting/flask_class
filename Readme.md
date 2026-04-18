@@ -316,6 +316,63 @@ OOP Task
 5.Method overriding and Method Overloading
 
 
+*PYTHON CONTROL STRUCTURES*
+->Control structures are building blocks that control the flow of execution in a program. They decide what code runs, when it runs and how many times
+it runs
+-> We have 3 control structures:
+1.Sequence 
+   - a program executes from top to bottom , left to right
+2.Selection /Decision Control
+   -> the ability of a program to make decisins based on some condition
+   -> use of conditional statements e.g if statements
+3.Iteration
+    -> execution of a block of code repeatedly
+    -> Looping controls -> for and while
+
+   *LOOPING*
+-> Loops are used to execute a block of code repeatedly. They help reduce redundancy & tedious work
+-> Types of Loops:
+1.for loop
+    -> used when you know how many times you want to repeat something
+2.while loop
+    -> executes code repeatedly until a condition becomes false
+
+*break* - stop the loop immediately
+*continue* - skip the current iteration
+
+*Nested Loops*
+-> A loop inside another loop
+-> The outer loop runs first, and for each iteration of the outer loop, the inner loop runs completely
+
+
+*Classes*
+*dunder methods* - are special methods that let you defines how your objects behave with inbuilt operations
+*instance variables* -> name mangling
+
+*Aggregate Functions*
+-> take multiple rows and return a single summarized / computed value
+-> Aggregate functions are almost always used with GROUP BY
+
+1.Count - counts rows
+2.Max - returns largest value
+3.Minn- return smallest value
+4.Avg. - computes arithmetic average
+5.Sum - adds numeric values
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 *INTRODUCTION TO FLASK*
 *Internet* - global network of connected devices or computers
 *www* - a service running on the internet that connects users to the internet via the browser

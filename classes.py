@@ -35,7 +35,10 @@ class Car:
         self.year = year
         self.fuel_capacity = fuel_capacity
         self.fuel_level = 0
-        self.is_running = False  
+        self.is_running = False 
+
+    def __str__(self):
+        pass
     
     def start(self):
         if self.fuel_level > 0:
