@@ -415,6 +415,51 @@ guidelines on usage
 8.Ruby - Ruby on Rails
 
 *ROUTING IN FLASK*
+-> Routing is the mechanism that maps / connects URLs to Python functions. It is a system for resource navigation.
+-> Connects a URL to functions in your Flask app
+
+*URL* -> uniform resource locator - the full address used to access an application
+ e.g. https://meet.google.com/dsh-idtb-oqb
+
+ *parts of a url*
+ 1.Protocol - tells the browser how to communicate (http<sends data as raw text> or https<data is encrypted>)
+ 2.Domain name - name of the application  e.g meet.google.com
+ 3.Port (optional) - where exactly on a server is the service running
+ 4.Path - path to a specific resource e.g /login ,/register
+
+ *Routing in Flask*
+ -> Its enabled by the use of a decorator function called @app.route()
+ *decorator function* is a special function that determines / modifies the behaviour of another function
+ they have the '@' character as a prefix
+ *app.route()* can take some arguments :
+    1.Rule / path - the specific resource to be accessed e.g / , /products
+    2.Method
+
+ *view function*: a function responsible for returning resources to a client
+
+
+ *NOTE* - all view functions must have unique names , no view functions can share the same name
+
+ *Instead of returning a single piece of data e.g products data , we should instead return full html pages e.g products.html
+ and in these html pages , we display our data and more content
+ Adjust your project structure to the one below:
+    
+    static - a folder containing all static files (css files, images, videos, icons, favicons)
+    templates - a folder containing all html files
+              - a single html file is called a template
+    database.py
+    main.py
+
+To render / display html pages in flask, we use render_template() function imported from flask
+
+
+
+
+   
+
+
+
+
 
 
 

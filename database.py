@@ -12,18 +12,12 @@ def get_products():
     products = cur.fetchall()
     return products
 
-product_data = get_products()
-print(product_data)
-
 
 #fetching sales
 def get_sales():
     cur.execute("select * from sales")
     sales = cur.fetchall()
     return sales
-
-sales_data = get_sales()
-print(sales_data)
 
 
 #fetching stock
@@ -32,44 +26,21 @@ def get_stock():
     stock = cur.fetchall()
     return stock
 
-stock_data = get_stock()
-print(stock_data)
-
 
 def get_data(table):
     cur.execute(f"select * from {table}")
     data = cur.fetchall()
     return data
 
-products = get_data('products')
-sales = get_data('sales')
-
 
 def insert_products(product_details):
     cur.execute(f"insert into products(name,buying_price,selling_price)values{product_details}")
     conn.commit()
 
-product1 = ('iphone 12',45000,55000)
-product2 = ('calculator',1000,1500)
-insert_products(product1)
-insert_products(product2)
-
-
 
 def insert_stock(stock_details):
     cur.execute("insert into stock(pid,stock_quantity)values(%s,%s)",(stock_details))
     conn.commit()
-
-
-stock1 = (5,40)
-stock2 = (6,70)
-insert_stock(stock1)
-insert_stock(stock2)
-
-
-
-
-
 
 
 def sales_per_product():
@@ -97,6 +68,7 @@ def profit_per_product():
     ''')
     profit_product = cur.fetchall()
     return profit_product
+
 
 def profit_per_day():
     cur.execute('''

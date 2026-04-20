@@ -1,6 +1,6 @@
-print(3)
-print(4)
-print(5)
-print(6)
-print(7)
-print(8)
+def get_name(f_name):
+    return f"My name is {f_name}"
+
+
+name = get_name("Max")
+print(name)
