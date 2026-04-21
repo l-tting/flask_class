@@ -453,6 +453,20 @@ guidelines on usage
 To render / display html pages in flask, we use render_template() function imported from flask
 
 
+*TEMPLATE INHERITANCE*
+-> This is a feature that enables us to reduce redundancy in building html pages by having one parent template called base.html conataining all common features of all pages e.g navbar , footer and then have the rest of the pages inherit from it
+*why use template inheritance?*
+1.Reduce redundancy
+2.Uniformity
+3.Simpler development process
+
+{% block title %} {% endblock %} -> defines a placeholder to define a title for child pages
+{% block content %} {% endblock   %} -> defines a placeholder block where unique content of each page is passed
+
+-> To implement template inheritance , we go to the child page and extend the parent
+
+
+
 
 
    

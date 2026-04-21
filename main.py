@@ -20,30 +20,27 @@ def products():
 @app.route('/sales')
 def sales():
     sales_data = get_sales()
-    return sales_data
+    return render_template("sales.html")
 
 
 @app.route('/stock')
 def stock():
-    return "This is the stock route"
+    return render_template("stock.html")
 
 
-@app.route('/dashbaord')
+@app.route('/dashboard')
 def dashboard():
-    return "This is the dashbaord page"
+    return render_template("dashboard.html")
 
 
 @app.route("/login")
 def login():
-    return "This is the login route"
+    return render_template("login.html")
 
 
 @app.route('/register')
 def register():
-    return "This is the regsiter route"
-
-
-
+    return render_template("register.html")
 
 
 
