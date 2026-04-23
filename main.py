@@ -14,13 +14,13 @@ def home():#view function
 @app.route('/products')
 def products():
     products_data = get_products()
-    return render_template("products.html")
+    return render_template("products.html",products_data = products_data)
 
 
 @app.route('/sales')
 def sales():
     sales_data = get_sales()
-    return render_template("sales.html")
+    return render_template("sales.html",sales_data = sales_data)
 
 
 @app.route('/stock')
@@ -43,6 +43,5 @@ def register():
     return render_template("register.html")
 
 
-
 # run your application
-app.run()
+app.run(debug=True)

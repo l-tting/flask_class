@@ -467,6 +467,29 @@ To render / display html pages in flask, we use render_template() function impor
 
 
 
+*DISPLAYING DATA IN FLASK*
+-> To  render / display data from Python in HTML we use Jinja
+-> *Jinja* - a templating engine used to render dynamic html pages in Flask - It is simply
+syntax ussed to display Python data in html
+-> Jinja can be used in two ways:
+1.When displaying variables 
+   -> use two curly braces {{}}
+2.When using control structures (conditional statements, Loops)
+  -> use the followng syntax:
+
+  {% for product in products %} -> initialization block
+
+       {{ product }}
+
+   {% endfor %} - termination
+
+   {% if i%2 == 0 %}
+     
+       {{ i }}
+
+   {% endif %}
+     
+
 
 
    
