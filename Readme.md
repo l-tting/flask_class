@@ -490,10 +490,43 @@ syntax ussed to display Python data in html
    {% endif %}
      
 
+*Posting Data In Flask*
+Posting -> moving data from a client to a server 
+
+*Workflow / Process*
+1.User is provided with a form to fill in the browser
+2.User fills the form and submits it to the server
+3.The form is submitted to a route in Flask
+4.Data from the form is extracted by a request object 
+    -> Data from the from is stored in key-value pairs
+    -> request object extracts the value using the key 
+    -> request object has access to some methods:
+       1.request.method - determines what method is specified in the form
+       2.request.form - extracts data from the form using key defined in the name attirbute
+5.Data is processed and inserted in database
+6.User is redirected - here we use the redirect() function - taking them to another section / resource
+   redirect(url_for('')) - pass the name of the view function
 
 
+*Form CheckList*
+1.method attribute - method determines what a server should do with data / a resource
+                    1.GET - retrive data from the server e.g. displaying products
+                    2.POST - sending data to a server e.g. adding products
+                    3.PUT. - updating an existng resource / data e.g changing product name
+                    4.DELETE - get rid of data e.g delete a product
+2.action attribute  - determines what route the form is submitted
+3.name attribute - is the key used by the request object to access & extract data from the form
+4.input type
+5.button - type submit
+
+
+p_name : "milk"
+b_price: "50"
+s_price: "60"
    
 
+*TASK*
+Post sales and stock data following the same process as posting products
 
 
 

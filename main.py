@@ -1,5 +1,5 @@
-from flask import Flask , render_template
-from database import get_products,get_sales
+from flask import Flask , render_template,request,redirect,url_for
+from database import get_products,get_sales,insert_products
 
 #creating a Flask instance
 app = Flask(__name__)
@@ -15,6 +15,20 @@ def home():#view function
 def products():
     products_data = get_products()
     return render_template("products.html",products_data = products_data)
+
+
+@app.route('/add_product',methods=['GET','POST'])
+def add_product():
+    if request.method == 'POST':
+        product_name = request.form['p_name']
+        buying_price = request.form['b_price']
+        selling_price = request.form['s_price']
+        new_product = (product_name,buying_price,selling_price)
+        insert_products(new_product)
+        print("Product Added Successfully")
+    return redirect(url_for('products'))
+
+
 
 
 @app.route('/sales')

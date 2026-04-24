@@ -37,6 +37,10 @@ def insert_products(product_details):
     cur.execute(f"insert into products(name,buying_price,selling_price)values{product_details}")
     conn.commit()
 
+product1 = ('milk',50,60)
+insert_products(product1)
+
+
 
 def insert_stock(stock_details):
     cur.execute("insert into stock(pid,stock_quantity)values(%s,%s)",(stock_details))
