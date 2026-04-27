@@ -1,8 +1,12 @@
-from flask import Flask , render_template,request,redirect,url_for
-from database import get_products,get_sales,insert_products
+from flask import Flask , render_template,request,redirect,url_for,flash
+from database import get_products,get_sales,insert_products,insert_stock,insert_sale,get_stock
 
 #creating a Flask instance
 app = Flask(__name__)
+
+
+app.secret_key = '99dnjc8uinh8chbw88dnasskls0'
+
 
 # http://127.0.0.1:5000/ - url
 @app.route('/') #decorator function
@@ -25,21 +29,45 @@ def add_product():
         selling_price = request.form['s_price']
         new_product = (product_name,buying_price,selling_price)
         insert_products(new_product)
-        print("Product Added Successfully")
+        flash("Product added successfully",'success')
     return redirect(url_for('products'))
-
 
 
 
 @app.route('/sales')
 def sales():
     sales_data = get_sales()
-    return render_template("sales.html",sales_data = sales_data)
+    products = get_products()
+    return render_template("sales.html",sales_data = sales_data,products = products)
+
+
+@app.route('/add_sale',methods=['GET','POST'])
+def add_sale():
+    if request.method == 'POST':
+        product_id = request.form['pid']
+        quantity = request.form['quantity']
+        new_sale = (product_id,quantity)
+        insert_sale(new_sale)
+        print("Sale made successfully")
+    return redirect(url_for('sales'))
 
 
 @app.route('/stock')
 def stock():
-    return render_template("stock.html")
+    stock_data = get_stock()
+    products = get_products()
+    return render_template("stock.html",stock_data = stock_data,products = products)
+
+
+@app.route('/add_stock',methods=['GET','POST'])
+def add_stock():
+    if request.method == 'POST':
+        product_id = request.form['pid']
+        stock_quantity = request.form['stock_quantity']
+        new_stock = (product_id,stock_quantity)
+        insert_stock(new_stock)
+        print("Stock added successfully")
+    return redirect(url_for('stock'))
 
 
 @app.route('/dashboard')

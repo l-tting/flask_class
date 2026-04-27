@@ -529,6 +529,30 @@ s_price: "60"
 Post sales and stock data following the same process as posting products
 
 
+*Flash Messaging* 
+-> Flash Messages are one time notifications to a user based on some action. Flash messages are stored in the server in session storage. 
+-> Any data stored in session must be secured using a secret key
+-> Flash messages contain 2 parts:
+1.Message  - the actual feedback e.g. Product Added Successfully
+2.Message Category - type of message 
+
+*Messsage Categories*
+1.Informational messages - blue
+2.Success messages - green
+3.Warning Messages - yellow
+4.Error / Danger Messsages - red
+
+flash messages are enabled by the flash() function imported from flask
+ -> flash(message,category)
+
+
+*TASK*
+1.Replace every print message with a flash message
+2.In database.py , using functions write queries to do the following:
+    a) insert users -> create_user()
+    b) check whether a user exists using their email -> check_user_exists()
+
+
 
 
 
