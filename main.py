@@ -1,5 +1,5 @@
 from flask import Flask , render_template,request,redirect,url_for,flash
-from database import get_products,get_sales,insert_products,insert_stock,insert_sale,get_stock
+from database import get_products,get_sales,insert_products,insert_stock,insert_sale,get_stock,available_stock
 
 #creating a Flask instance
 app = Flask(__name__)
@@ -46,9 +46,13 @@ def add_sale():
     if request.method == 'POST':
         product_id = request.form['pid']
         quantity = request.form['quantity']
+        check_stock = available_stock(product_id)
+        if check_stock < float(quantity):
+            flash("Insufficient stock to complete sale",'danger')
+            return redirect(url_for('sales'))
         new_sale = (product_id,quantity)
         insert_sale(new_sale)
-        print("Sale made successfully")
+        flash("Sale made successfully",'success')
     return redirect(url_for('sales'))
 
 
@@ -66,7 +70,7 @@ def add_stock():
         stock_quantity = request.form['stock_quantity']
         new_stock = (product_id,stock_quantity)
         insert_stock(new_stock)
-        print("Stock added successfully")
+        flash("Stock added successfully",'success')
     return redirect(url_for('stock'))
 
 

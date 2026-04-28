@@ -554,7 +554,48 @@ flash messages are enabled by the flash() function imported from flask
 
 
 
+*Making Purchases*
+add products -> add stock on products -> make sales on products in stock - stock is updated
+-> check for sufficient stock before making another sale
 
+milk ---> 1000 ----> 500 ----> 500 remaining 
+
+ id | pid | stock_quantity |         created_at         
+----+-----+----------------+----------------------------
+  1 |   3 |             50 | 2026-04-10 15:06:58.088418
+  2 |   7 |             50 | 2026-04-14 16:17:05.637068
+  3 |   8 |             25 | 2026-04-14 16:17:05.639132
+  4 |   7 |             50 | 2026-04-20 15:57:36.926479
+  5 |   8 |             25 | 2026-04-20 15:57:36.92891
+  6 |   7 |             50 | 2026-04-20 15:57:51.80367
+  7 |   8 |             25 | 2026-04-20 15:57:51.815576
+  8 |   7 |             50 | 2026-04-20 16:06:56.800811
+  9 |   8 |             25 | 2026-04-20 16:06:56.805105
+ 10 |   7 |             50 | 2026-04-20 16:07:02.566926
+
+
+
+100 packets of milk -> 40 sold ---> 60 in stock
+100 - 40 = 60
+
+milk => 100 + 50 + 40 + 30 = 220
+milk => 20 + 60 + 80  => 160
+
+
+cur.fetchall() -> returns multiple rows as a list of tuples 
+cur.fetchone() -> returns a single row in a tuple (250,)
+
+add bread -> add 100 stock -> no sale
+
+zero -> 100 - 100 = 0
+null / none
+
+
+100 - null
+
+
+*User Registration, Authentication & Login*
+Post a user in the users table using register route
 
 
 

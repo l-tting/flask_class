@@ -87,3 +87,28 @@ def profit_per_day():
     profit_day = cur.fetchall()
     return profit_day
 
+
+
+def available_stock(pid):
+    cur.execute("select sum(stock_quantity) from stock where pid = %s",(pid,))
+    total_stock = cur.fetchone()[0] or 0
+
+    cur.execute("select sum(quantity) from sales where pid = %s",(pid,))
+    total_sold = cur.fetchone()[0] or 0
+    return total_stock - total_sold
+
+
+check_stock = available_stock(58)
+print(check_stock)
+
+
+def insert_user(user_details):
+    cur.execute("insert into users(full_name,email,phone_number,password)values(%s,%s,%s,%s)",user_details)
+    conn.commit()
+
+
+def check_user_exists(email):
+    cur.execute("select * from user where user.email = %s",(email,))
+    user_data = cur.fetchone()
+    return user_data
+
