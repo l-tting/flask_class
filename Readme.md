@@ -594,9 +594,30 @@ null / none
 100 - null
 
 
-*User Registration, Authentication & Login*
-Post a user in the users table using register route
+*User Registration , Authentication & Login*
 
+Task - create and insert a user into users table using registration form
+
+
+Jane Doe , jane@mail.com , 0712345678, 1234
+
+*Password Hashing*
+-> Process of converting plain text password to a fixed length string that  is hard to decipher
+12345 -> cikf0oe3mi89cj30odnjc9jcm
+
+hashing a string always reproduces the same value
+
+1234 -> 8h99fjjv9fnjvjvjv
+1234 -> 8h99fjjv9fnjvjvjv
+
+*Rainbow Table attacks* -> a hacker tries to decrypt a password from known hashes
+*Salting* -> adding random values to a plain text password to make it complex before hashing
+
+1234djjdjkdc898wby7xghcx -> s89ue3878dsbg7dfue887chvhbwjjx99djkdj
+
+we use encryption algorithms to do password hashing - > bcrypt
+
+1234ducbbciifjnbn -> d89fnv9ifnvcju8edbgxyxyx
 
 
 
