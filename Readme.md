@@ -620,11 +620,24 @@ we use encryption algorithms to do password hashing - > bcrypt
 1234ducbbciifjnbn -> d89fnv9ifnvcju8edbgxyxyx
 
 
+*Session : Page Protection && Navbar Protection*
+Store user data in session cookie...
+-> session cookie stores data in key-value pair format
+-> storing user data in session becomes part of the authentication process, this implies
+that if there is no user data in session, a user is presumed to have not logged in 
 
 
+*authentication vs authorization , password hashing and salting , session and cookies, alternative auth schemes*
 
 
+*List Comprehension*
+-> A short way of adding items in a list from a loop without having to append
 
+
+*task on list comprehension*
+Using list comprehension:
+1.Create a list of squares from 1 to 10
+2.words = ["apple","mango","kiwi","egg","cherry","bread","me"] -> create a new list of words that have length >= 5
 
 
 

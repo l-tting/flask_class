@@ -1,6 +1,7 @@
-from flask import Flask, render_template,request,redirect,url_for,flash
-from database import get_products, get_sales, insert_products, insert_sales,insert_stock,get_stock,available_stock,insert_user,check_user_exists
+from flask import Flask, render_template,request,redirect,url_for,flash,session
+from database import get_products, get_sales, insert_products, insert_sale,insert_stock,get_stock,available_stock,insert_user,check_user_exists
 from flask_bcrypt import Bcrypt
+from functools import wraps
 
 #creating a Flask instance
 app = Flask(__name__)
@@ -17,8 +18,18 @@ def home(): #view function
     return render_template('index.html')
 
 
+def login_required(f):
+    @wraps(f)
+    def protected(*args,**kwargs):
+        if 'email' not in session:
+            return redirect(url_for('login'))
+        return f(*args,**kwargs)
+    return protected
+
+
 # http://127.0.0.1:5000/products
 @app.route('/products')
+@login_required
 def products():
     products_data = get_products()
     return render_template('products.html',products_data = products_data)
@@ -37,6 +48,7 @@ def add_product():
 
 
 @app.route('/sales')
+@login_required
 def sales():
     sales_data = get_sales()
     products_data = get_products()
@@ -54,13 +66,14 @@ def add_sales():
             flash("Insufficient stock,can't complete sale",'danger')
             return redirect(url_for('sales'))
         new_sale = (product_id,quantity)
-        insert_sales(new_sale)
+        insert_sale(new_sale)
         flash("Sale added successfully",'success')
     return redirect(url_for('sales'))
 
 
 
 @app.route('/stock')
+@login_required
 def stock():
     stock_data = get_stock()
     product_data = get_products()
@@ -80,11 +93,12 @@ def add_stock():
 
 
 @app.route('/dashboard')
-def dashbaord():
+@login_required
+def dashboard():
     return render_template("dashboard.html")
 
 
-@app.route('/login',methdods=['GET','POST'])
+@app.route('/login',methods=['GET','POST'])
 def login():
     if request.method == 'POST':
         email = request.form['email']
@@ -94,7 +108,8 @@ def login():
         if not existing_user:
             flash("User doesn't exist,please register",'danger')
         else:
-            if bcrypt.check_password_hash(password,existing_user[-1]):
+            if bcrypt.check_password_hash(existing_user[-1],password):
+                session['email'] = email
                 flash("Login successful",'success')
                 return redirect(url_for('dashboard'))
             else:
@@ -120,6 +135,13 @@ def regsiter():
             flash("User exists already ,please login",'danger')
     return render_template("register.html")
 
+
+#logging out by removing email from session
+@app.route('/logout')
+def logout():
+    session.pop('email',None)
+    flash("User logged out successfully","success")
+    return redirect(url_for('login'))
 
 
 app.run(debug=True)
