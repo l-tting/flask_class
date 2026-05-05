@@ -641,3 +641,29 @@ Using list comprehension:
 
 
 
+*Data Visualization With Charts*
+-> Visual representation of complex data in an easy to interpret manner using visual aids.
+-> Charts:
+ bar charts, line charts , pie charts , radar charts , doughnut charts , histograms / frequency polygon, polar area , heat maps
+ ,scatter plots
+
+
+
+ Bar charts - useful with categorical data (data defined by labels) => sales & profit per product
+    x axis ->  product names
+    y axis ->  sales & profit values
+ Line charts - useful with continuous data (data with a time component) => sales & profit per day
+    x axis -> day 
+    y axis -> sales & profit values
+
+
+
+Profit per prod [('samsung phone', Decimal('16100000.00')), ('bread', Decimal('8500.00'))]
+
+*FEW EXTRAS*
+1.OOP (classes and objects) -> learn deeper -> inheritance , abstraction and encapsulation
+2.Creating a virtual environment in Python
+3.SqlAlchemy - ORM
+4.Better login with Flask Login
+5.Mailing service with flask mail
+6.Context Processor

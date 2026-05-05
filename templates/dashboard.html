@@ -3,6 +3,72 @@
 {% block content %}
 <div>
     This is dashboard
+
+    <div>
+        <canvas id="line-chart" width="800" height="450"></canvas>
+    </div>
+
+    <div>
+        <canvas id="bar-chart-grouped" width="800" height="450"></canvas>
+    </div>
+
 </div>
+
+<script>
+
+    new Chart(document.getElementById("line-chart"), {
+        type: 'line',
+        data: {
+            labels: {{ day | safe }},
+            datasets: [{
+                data: {{ day_sales | safe }},
+                label: "Sales Per Day",
+                borderColor: "#3e95cd",
+                fill: false
+            }, {
+                data: {{ day_profit | safe }},
+                label: "Profit Per Day",
+                borderColor: "#8e5ea2",
+                fill: false
+            },
+            ]
+        },
+        options: {
+            title: {
+                display: true,
+                text: 'Profit and Sales Per Day(Ksh.)'
+            }
+        }
+    });
+
+
+    new Chart(document.getElementById("bar-chart-grouped"), {
+    type: 'bar',
+    data: {
+      labels:{{ product_names | safe}},
+      datasets: [
+        {
+          label: "Sales Per Product",
+          backgroundColor: "#3e95cd",
+          data: {{ product_sales | safe }}
+        }, {
+          label: "Profit Per Product",
+          backgroundColor: "#8e5ea2",
+          data: {{ product_profit | safe }}
+        }
+      ]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Profit and Sales Per Product (Ksh.)'
+      }
+    }
+});
+
+
+
+
+</script>
 
 {% endblock %}

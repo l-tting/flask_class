@@ -1,5 +1,5 @@
 from flask import Flask, render_template,request,redirect,url_for,flash,session
-from database import get_products, get_sales, insert_products, insert_sale,insert_stock,get_stock,available_stock,insert_user,check_user_exists
+from database import get_products, get_sales, insert_products, insert_sale,insert_stock,get_stock,available_stock,insert_user,check_user_exists,sales_per_day,sales_per_product,profit_per_day,profit_per_product
 from flask_bcrypt import Bcrypt
 from functools import wraps
 
@@ -92,10 +92,31 @@ def add_stock():
     return redirect(url_for('stock'))
 
 
+
 @app.route('/dashboard')
 @login_required
 def dashboard():
-    return render_template("dashboard.html")
+    sales_product = sales_per_product()
+    sales_day = sales_per_day()
+    profit_product = profit_per_product()
+    profit_day = profit_per_day()
+
+    
+    #product data
+    product_names = [ i[0] for i in sales_product ]
+    product_sales = [ float(i[1]) for i in sales_product ]
+    product_profit = [ float(i[1]) for i in profit_product ]
+
+    # #day data
+    day = [ str(i[0]) for i in sales_day ]
+    day_sales = [ float(i[1]) for i in sales_day ]
+    day_profit = [ float(i[1]) for i in profit_day ]
+
+    return render_template("dashboard.html", 
+              product_names = product_names, product_sales=product_sales, product_profit = product_profit,
+               day = day , day_sales = day_sales , day_profit= day_profit            
+                           )
+
 
 
 @app.route('/login',methods=['GET','POST'])

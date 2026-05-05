@@ -63,12 +63,15 @@ def sales_per_product():
 
 def sales_per_day():
     cur.execute('''
-        select date(sales.created_at) as day, (sales.quantity * products.selling_price) as 
+        select date(sales.created_at) as day, sum(sales.quantity * products.selling_price) as 
         total_sales from products join sales on sales.pid = products.id group by day;
     ''')
     sales_day = cur.fetchall()
     return sales_day
 
+
+x = sales_per_day()
+print("Sales",x)
 
 def profit_per_product():
     cur.execute('''
@@ -78,6 +81,8 @@ def profit_per_product():
     profit_product = cur.fetchall()
     return profit_product
 
+y  = profit_per_product()
+print("Profit per prod",y)
 
 def profit_per_day():
     cur.execute('''
@@ -86,6 +91,9 @@ def profit_per_day():
     ''')
     profit_day = cur.fetchall()
     return profit_day
+
+# y = profit_per_day()
+# print("Profit",y)
 
 
 
@@ -96,10 +104,6 @@ def available_stock(pid):
     cur.execute("select sum(quantity) from sales where pid = %s",(pid,))
     total_sold = cur.fetchone()[0] or 0
     return total_stock - total_sold
-
-
-check_stock = available_stock(58)
-print(check_stock)
 
 
 def insert_user(user_details):
